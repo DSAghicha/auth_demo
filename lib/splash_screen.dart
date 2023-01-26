@@ -1,4 +1,8 @@
+import 'dart:async';
+
+import 'package:auth_demo/brand/brand.dart';
 import 'package:auth_demo/colors.dart';
+import 'package:auth_demo/login_screen.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget{
@@ -9,6 +13,26 @@ class SplashScreen extends StatefulWidget{
 }
 
 class InitState extends State<SplashScreen> {
+
+  @override
+  void initState() {
+    super.initState();
+    startTimer();
+  }
+
+  startTimer() async {
+    // var duration = const Duration(seconds: 3);
+    return Timer(const Duration(seconds: 5), loginRoute);
+  }
+
+  loginRoute() {
+    Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const LoginScreen()
+        )
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return initWidget();
@@ -25,15 +49,7 @@ class InitState extends State<SplashScreen> {
             ),
           ),
           const Center(
-            child: Text(
-              "</DSAghicha>",
-              style: TextStyle(
-                  color: AppColor.white,
-                  fontSize: 40,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: "Courgette"
-              )
-            ),
+            child: BrandText(40)
           )
         ],
       )
